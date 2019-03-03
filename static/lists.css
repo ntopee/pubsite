@@ -1,0 +1,44 @@
+#favourites
+{
+    min-width: 600px;
+    min-height: 120px;
+    list-style-type: none;
+
+}
+#other
+{
+    min-width: 600px;
+    min-height: 120px;
+    list-style-type: none;
+}
+
+.column {
+    width: 162px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor: move;
+}
+.column header {
+    height: 35px;
+    width: 250px;
+    color: black;
+    background-color: #ADD8E6;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+    border: 2px solid #666666;
+}
+
+.column.dragElem {
+    opacity: 0.4;
+}
+.column.over {
+    border-top: 2px solid blue;
+}
+
+.trow:hover{
+    background-color: #aefffa;
+}
+.highlight {
+    background-color: aqua;
+}

@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="lists.css">
     <title>Pubsite</title>
 </head>
 <body>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Pubsite</a>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -19,49 +20,21 @@
                 <a class="nav-link" href="/Pubs.html">Kocsmák</a>
             </li>
         </ul>
+            <a class="btn btn-outline-success my-2 my-sm-0" href="pubs_edit.html"><i class="fas fa-plus"></i> Új kocsma</a>
     </div>
 </nav>
 
 <div class="container">
-    <h2>Új terv</h2>
     <div class="row">
-        <div class="col-md-12 col-lg-4">
-                <h3>Résztvevők</h3>
-                <ul id="favourites" class="fbox">
-                    <li class="column" itemID="1">
-                        <header>Személy1</header>
-                    </li>
-                    <li class="column" itemID="2">
-                        <header>Személy2</header>
-                    </li>
-                    <li class="column" itemID="3">
-                        <header>Személy3</header>
-                    </li>
-                </ul>
-            <h3>Többiek</h3>
-                <ul id="other" class="fbox">
-                    <li class="column" itemID="1">
-                        <header>Személy4</header>
-                    </li>
-                    <li class="column" itemID="2">
-                        <header>Személy5</header>
-                    </li>
-                    <li class="column" itemID="3">
-                        <header>Személy6</header>
-                    </li>
-                </ul>
-        </div>
-
-
-
-        <div class="col-md-12 col-lg-8">
-            <h2>Ide mehetünk</h2>
+        <div class=" col-sm-12 col-xl-10">
+            <h2>Kocsmák</h2>
             <table class="table table-stripped">
                 <thead>
                 <tr>
                     <th>Név</th>
                     <th>Cím</th>
                     <th>Nyitvatartás</th>
+                    <th>&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,29 +42,42 @@
                     <td>Minta</td>
                     <td>1111 Lorem, Ipsum utca 11.</td>
                     <td>10:00-18:00</td>
+                    <td class="text-right">
+                        <a href="pubs_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Minta2</td>
                     <td>1111 Lorem, Ipsum utca 11.</td>
                     <td>10:00-18:00</td>
+                    <td class="text-right">
+                        <a href="pubs_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Minta3</td>
                     <td>1111 Lorem, Ipsum utca 11.</td>
                     <td>10:00-18:00</td>
+                    <td class="text-right">
+                        <a href="pubs_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Minta3</td>
                     <td>1111 Lorem, Ipsum utca 11.</td>
                     <td>10:00-18:00</td>
+                    <td class="text-right">
+                        <a href="pubs_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/drag.js"></script>
 </body>
 </html>
