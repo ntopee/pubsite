@@ -13,6 +13,7 @@ module.exports = function (app) {
      */
     app.get('/',
         getPersonListMW(objectRepository),
+        commonPrefListMW(objectRepository),
         renderMW(objectRepository, 'mainpage')
     );
 

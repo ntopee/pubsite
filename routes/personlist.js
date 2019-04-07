@@ -32,6 +32,17 @@ module.exports = function (app) {
         savePersonPreferencesMW(objectRepository),
         renderMW(objectRepository, 'people')
     );
+
+    /**
+     * List all people
+     */
+
+    app.get('/people/list',
+        getPersonListMW(objectRepository),
+        getPersonPreferencesMW(objectRepository),
+        renderMW(objectRepository, 'people')
+    );
+
     /**
      * Add new person
      */

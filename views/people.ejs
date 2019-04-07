@@ -15,12 +15,12 @@
                 <tbody>
                 <% personList.forEach(function(p){%>
                 <tr class="trow">
-                    <td><%=p.name %></td>
+                    <td><%= p.name %></td>
                     <td><%= p.fullname%></td>
                     <td><%= p.favourite%></td>
                     <td class="text-right">
-                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                        <a href="/people/mod/<%= p.name %>" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="/people/del/<%= p.name %>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 <% }) %>
@@ -33,17 +33,14 @@
                 <h2>Kedvelt helyek</h2>
                     <ul id="favourites" class="fbox">
                         <% preferredList.forEach(function(p){%>
-                            <li class="column" itemID="1"><header><%= p%></header></li>
+                            <li class="column"><header><%= p%></header></li>
                         <% }) %>
-                        <li class="column" itemID="1"><header>Kocsma1</header></li>
-                        <li class="column" itemID="2"><header>Kocsma2</header></li>
-                        <li class="column" itemID="3"><header>Kocsma3</header></li>
                     </ul>
                 <h2>Egyéb</h2>
                 <ul id="other" class="fbox">
-                    <li class="column" itemID="1"><header>Kocsma4</header></li>
-                    <li class="column" itemID="2"><header>Kocsma5</header></li>
-                    <li class="column" itemID="3"><header>Kocsma6</header></li>
+                    <% notPreferredList.forEach(function(p){%>
+                        <li class="column"><header><%= p%></header></li>
+                    <% }) %>
                 </ul>
             </div>
         </div>

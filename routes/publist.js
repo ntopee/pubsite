@@ -41,6 +41,7 @@ module.exports = function (app) {
      */
 
     app.get('/pubs/mod/:pubid',
+        getPubMW(objectRepository),
         renderMW(objectRepository, 'pubs_edit')
     );
 

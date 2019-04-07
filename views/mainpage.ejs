@@ -12,7 +12,7 @@
                         <li class="column" itemID="1">
                             <header><%= p.name %></header>
                         </li>
-                    <% }) %>
+                        <% }) %>
                 </ul>
         </div>
 
@@ -28,26 +28,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Minta</td>
-                    <td>1111 Lorem, Ipsum utca 11.</td>
-                    <td>10:00-18:00</td>
+                <% commonPrefList.forEach(function(p){%>
+                <tr class="trow">
+                    <td><%=p.name %></td>
+                    <td><%= p.address%></td>
+                    <td><%= p.open%></td>
                 </tr>
-                <tr>
-                    <td>Minta2</td>
-                    <td>1111 Lorem, Ipsum utca 11.</td>
-                    <td>10:00-18:00</td>
-                </tr>
-                <tr>
-                    <td>Minta3</td>
-                    <td>1111 Lorem, Ipsum utca 11.</td>
-                    <td>10:00-18:00</td>
-                </tr>
-                <tr>
-                    <td>Minta3</td>
-                    <td>1111 Lorem, Ipsum utca 11.</td>
-                    <td>10:00-18:00</td>
-                </tr>
+                    <% }) %>
                 </tbody>
             </table>
         </div>
