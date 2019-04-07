@@ -1,7 +1,6 @@
 var renderMW = require('../middleware/generic/render');
 var commonPrefListMW = require('../middleware/generic/commonPrefList');
 var getPersonListMW = require('../middleware/people/getPersonList');
-var userModel = {};
 
 module.exports = function (app) {
 
@@ -14,12 +13,15 @@ module.exports = function (app) {
      */
     app.get('/',
         getPersonListMW(objectRepository),
-        renderMW(objectRepository)
+        renderMW(objectRepository, 'mainpage')
     );
 
+    /**
+     * Main page, with a list of the common preferred pubs
+     */
     app.post('/out',
         getPersonListMW(objectRepository),
         commonPrefListMW(objectRepository),
-        renderMW(objectRepository)
+        renderMW(objectRepository, 'mainpage')
     );
 };

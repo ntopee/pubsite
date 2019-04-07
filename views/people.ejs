@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="lists.css">
-    <title>Pubsite</title>
-</head>
-<body>
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Pubsite</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/people.html">Személyek</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Pubs.html">Kocsmák</a>
-            </li>
-        </ul>
-            <a class="btn btn-outline-success my-2 my-sm-0" href="people_edit.html"><i class="fas fa-plus"></i> Új személy</a>
-    </div>
-</nav>
-
+<%- include('header') %>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-lg-8">
@@ -43,7 +18,7 @@
                     <td>Lorem Ipsum Dolor</td>
                     <td>sit amet</td>
                     <td class="text-right">
-                        <a href="people_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                         <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
@@ -52,7 +27,7 @@
                     <td>Lorem Ipsum Dolor</td>
                     <td>sit amet</td>
                     <td class="text-right">
-                        <a href="people_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                         <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
@@ -61,7 +36,7 @@
                     <td>Lorem Ipsum Dolor</td>
                     <td>sit amet</td>
                     <td class="text-right">
-                        <a href="people_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                         <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
@@ -70,7 +45,7 @@
                     <td>Lorem Ipsum Dolor</td>
                     <td>sit amet</td>
                     <td class="text-right">
-                        <a href="people_edit.html" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                         <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
@@ -98,7 +73,7 @@
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/drag.js"></script>
-<script type="text/javascript" src="/people.js"></script>
-</body>
-</html>
+<script type="text/javascript" src="/js/drag.js"></script>
+<script type="text/javascript" src="/js/people.js"></script>
+<script>$( "#navbarSupportedContent" ).append( "<a class=\"btn btn-outline-success my-2 my-sm-0\" href=\"/people/add\"><i class=\"fas fa-plus\"></i> Új személy</a>" );</script>
+<%- include('footer') %>

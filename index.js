@@ -14,9 +14,13 @@ app.use(function (req, res, next) {
  * Include all the routes
  */
 require('./routes/mainpage')(app);
+require('./routes/personlist')(app);
+require('./routes/publist')(app);
 
 //Use the static MW
-//app.use(express.static('static'));
+app.use(express.static('public'));
+
+app.set('view engine', 'ejs');
 
 /**
  * Standard error handler

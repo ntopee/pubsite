@@ -8,6 +8,7 @@ module.exports = function (objectrepository) {
     var pubModel = requireOption(objectrepository, 'pubModel');
 
     return function (req, res, next) {
+        console.log('savePub');
         return next();
     };
 };

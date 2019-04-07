@@ -1,5 +1,4 @@
 var renderMW = require('../middleware/generic/render');
-
 var getPersonListMW = require('../middleware/people/getPersonList');
 var updatePersonMW = require('../middleware/people/updatePerson');
 var getPersonMW = require('../middleware/people/getPerson');
@@ -8,7 +7,6 @@ var savePersonPreferencesMW = require('../middleware/people/savePersonPreference
 var getPersonPreferencesMW = require('../middleware/people/getPersonPreferences');
 var checkPersonMW = require('../middleware/people/deletePerson');
 var savePersonMW = require('../middleware/people/deletePerson');
-var personModel = {};
 
 module.exports = function (app) {
 
@@ -20,7 +18,7 @@ module.exports = function (app) {
      * List all people, select :id, list the preferred pubs
      */
 
-    app.get('/people/:id',
+    app.get('/people/list/:id',
         getPersonListMW(objectRepository),
         getPersonPreferencesMW(objectRepository),
         renderMW(objectRepository, 'people')
@@ -29,7 +27,7 @@ module.exports = function (app) {
     /**
      * Save the modified preference list
      */
-    app.post('/people/:id',
+    app.post('/people/list/:id',
         getPersonListMW(objectRepository),
         savePersonPreferencesMW(objectRepository),
         renderMW(objectRepository, 'people')
@@ -41,7 +39,7 @@ module.exports = function (app) {
     app.get('/people/add',
         checkPersonMW(objectRepository),
         savePersonMW(objectRepository),
-        renderMW(objectRepository, 'addperson')
+        renderMW(objectRepository, 'people_edit')
     );
 
 
@@ -49,7 +47,7 @@ module.exports = function (app) {
         checkPersonMW(objectRepository),
         updatePersonMW(objectRepository),
         savePersonMW(objectRepository),
-        renderMW(objectRepository, 'addperson')
+        renderMW(objectRepository, 'people_edit')
     );
 
     /**
@@ -58,14 +56,14 @@ module.exports = function (app) {
 
     app.get('/people/mod/:personid',
         getPersonMW(objectRepository),
-        renderMW(objectRepository, 'addperson')
+        renderMW(objectRepository, 'people_edit')
     );
 
     app.post('/people/mod/:personid',
         getPersonMW(objectRepository),
         updatePersonMW(objectRepository),
         savePersonMW(objectRepository),
-        renderMW(objectRepository, 'addperson')
+        renderMW(objectRepository, 'people_edit')
     );
 
     /**
@@ -78,9 +76,8 @@ module.exports = function (app) {
         checkPersonMW(objectRepository),
         deletePersonMW(objectRepository),
         function (req, res, next) {
-            return res.redirect('/people');
+            return res.redirect('/people/list/1');
         }
     );
-
 };
 
