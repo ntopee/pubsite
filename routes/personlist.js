@@ -87,7 +87,7 @@ module.exports = function (app) {
         checkPersonMW(objectRepository),
         deletePersonMW(objectRepository),
         function (req, res, next) {
-            return res.redirect('/people/list/1');
+            return res.redirect('/people/list');
         }
     );
 };
