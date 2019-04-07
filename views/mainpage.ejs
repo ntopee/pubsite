@@ -5,27 +5,14 @@
         <div class="col-md-12 col-lg-4">
                 <h3>Résztvevők</h3>
                 <ul id="favourites" class="fbox">
-                    <li class="column" itemID="1">
-                        <header>Személy1</header>
-                    </li>
-                    <li class="column" itemID="2">
-                        <header>Személy2</header>
-                    </li>
-                    <li class="column" itemID="3">
-                        <header>Személy3</header>
-                    </li>
                 </ul>
             <h3>Többiek</h3>
                 <ul id="other" class="fbox">
-                    <li class="column" itemID="1">
-                        <header>Személy4</header>
-                    </li>
-                    <li class="column" itemID="2">
-                        <header>Személy5</header>
-                    </li>
-                    <li class="column" itemID="3">
-                        <header>Személy6</header>
-                    </li>
+                    <% personList.forEach(function(p){%>
+                        <li class="column" itemID="1">
+                            <header><%= p.name %></header>
+                        </li>
+                    <% }) %>
                 </ul>
         </div>
 

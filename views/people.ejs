@@ -13,42 +13,17 @@
                 </tr>
                 </thead>
                 <tbody>
+                <% personList.forEach(function(p){%>
                 <tr class="trow">
-                    <td>Minta</td>
-                    <td>Lorem Ipsum Dolor</td>
-                    <td>sit amet</td>
+                    <td><%=p.name %></td>
+                    <td><%= p.fullname%></td>
+                    <td><%= p.favourite%></td>
                     <td class="text-right">
                         <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                         <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
-                <tr class="trow">
-                    <td>Minta2</td>
-                    <td>Lorem Ipsum Dolor</td>
-                    <td>sit amet</td>
-                    <td class="text-right">
-                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr class="trow">
-                    <td>Minta3</td>
-                    <td>Lorem Ipsum Dolor</td>
-                    <td>sit amet</td>
-                    <td class="text-right">
-                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <tr class="trow">
-                    <td>Minta4</td>
-                    <td>Lorem Ipsum Dolor</td>
-                    <td>sit amet</td>
-                    <td class="text-right">
-                        <a href="/people/mod/1" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
+                <% }) %>
                 </tbody>
             </table>
         </div>
@@ -57,6 +32,9 @@
             <div id="wrapper">
                 <h2>Kedvelt helyek</h2>
                     <ul id="favourites" class="fbox">
+                        <% preferredList.forEach(function(p){%>
+                            <li class="column" itemID="1"><header><%= p%></header></li>
+                        <% }) %>
                         <li class="column" itemID="1"><header>Kocsma1</header></li>
                         <li class="column" itemID="2"><header>Kocsma2</header></li>
                         <li class="column" itemID="3"><header>Kocsma3</header></li>

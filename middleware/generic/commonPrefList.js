@@ -9,6 +9,7 @@ module.exports = function (objectrepository) {
     var personModel = requireOption(objectrepository, 'personModel');
 
     return function (req, res, next) {
+        res.tpl.commonPrefList=["Pub1","Pub2","Pub3","Pub4"];
         return next();
     };
 
