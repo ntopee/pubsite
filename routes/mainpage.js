@@ -2,10 +2,14 @@ var renderMW = require('../middleware/generic/render');
 var commonPrefListMW = require('../middleware/generic/commonPrefList');
 var getPersonListMW = require('../middleware/people/getPersonList');
 
+var personModel = require("../models/person");
+var pubModel = require("../models/pub");
+
 module.exports = function (app) {
 
     var objectRepository = {
-        personModel: 'personModel'
+        personModel: personModel,
+        pubModel: pubModel
     };
 
     /**

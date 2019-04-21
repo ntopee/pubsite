@@ -1,7 +1,7 @@
 var requireOption = require('../common').requireOption;
 
 /**
- * Save changes to person preferences to the db
+ * Update the prferences of the person
  */
 module.exports = function (objectrepository) {
 

@@ -6,10 +6,12 @@ var deletePubMW = require ('../middleware/pubs/deletePub');
 var checkPubMW =require('../middleware/pubs/checkPub');
 var savePubMW=require('../middleware/pubs/savePub');
 
+var pubModel = require("../models/pub");
+
 module.exports = function (app) {
 
     var objectRepository = {
-        pubModel: 'pubModel'
+        pubModel: pubModel
     };
 
     /**

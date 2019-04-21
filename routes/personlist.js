@@ -3,15 +3,19 @@ var getPersonListMW = require('../middleware/people/getPersonList');
 var updatePersonMW = require('../middleware/people/updatePerson');
 var getPersonMW = require('../middleware/people/getPerson');
 var deletePersonMW = require('../middleware/people/deletePerson');
-var savePersonPreferencesMW = require('../middleware/people/savePersonPreferences');
+var updatePersonPreferencesMW = require('../middleware/people/updatePersonPreferences');
 var getPersonPreferencesMW = require('../middleware/people/getPersonPreferences');
-var checkPersonMW = require('../middleware/people/deletePerson');
-var savePersonMW = require('../middleware/people/deletePerson');
+var checkPersonMW = require('../middleware/people/checkPerson');
+var savePersonMW = require('../middleware/people/savePerson');
+
+var personModel = require("../models/person");
+var pubModel = require("../models/pub");
 
 module.exports = function (app) {
 
     var objectRepository = {
-        personModel: 'personModel'
+        personModel: personModel,
+        pubModel: pubModel
     };
 
     /**
@@ -29,7 +33,8 @@ module.exports = function (app) {
      */
     app.post('/people/list/:id',
         getPersonListMW(objectRepository),
-        savePersonPreferencesMW(objectRepository),
+        updatePersonPreferencesMW(objectRepository),
+        savePersonMW(objectRepository),
         renderMW(objectRepository, 'people')
     );
 
@@ -48,8 +53,6 @@ module.exports = function (app) {
      */
 
     app.get('/people/add',
-        checkPersonMW(objectRepository),
-        savePersonMW(objectRepository),
         renderMW(objectRepository, 'people_edit')
     );
 

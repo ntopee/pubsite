@@ -1,14 +1,19 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+
+//Use the static MW
+app.use(express.static('public'));
+//set view engine
+app.set('view engine', 'ejs');
 
 /**
- * Let's create the .tpl and .error on the res object
+ * Parse parameters in POST
  */
-app.use(function (req, res, next) {
-    res.error = [];
-    res.tpl = {};
-    return next();
-});
+// for parsing application/json
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
  * Include all the routes
@@ -16,11 +21,6 @@ app.use(function (req, res, next) {
 require('./routes/mainpage')(app);
 require('./routes/personlist')(app);
 require('./routes/publist')(app);
-
-//Use the static MW
-app.use(express.static('public'));
-
-app.set('view engine', 'ejs');
 
 /**
  * Standard error handler
@@ -32,6 +32,7 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
 });
 
+//start server
 var server = app.listen(3000, function () {
-    console.log('Hello :3000');
+    console.log('listening on http://localhost:3000');
 });
