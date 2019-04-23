@@ -3,10 +3,12 @@ var getPersonListMW = require('../middleware/people/getPersonList');
 var updatePersonMW = require('../middleware/people/updatePerson');
 var getPersonMW = require('../middleware/people/getPerson');
 var deletePersonMW = require('../middleware/people/deletePerson');
-var updatePersonPreferencesMW = require('../middleware/people/updatePersonPreferences');
+var addPersonPreferenceMW = require('../middleware/people/addPersonPreference');
+var delPersonPreferenceMW = require('../middleware/people/delPersonPreference');
 var getPersonPreferencesMW = require('../middleware/people/getPersonPreferences');
 var checkPersonMW = require('../middleware/people/checkPerson');
 var savePersonMW = require('../middleware/people/savePerson');
+var getPubListMW = require('../middleware/pubs/getPubList');
 
 var personModel = require("../models/person");
 var pubModel = require("../models/pub");
@@ -19,23 +21,27 @@ module.exports = function (app) {
     };
 
     /**
-     * List all people, select :id, list the preferred pubs
+     * List all people
      */
 
-    app.get('/people/list/:id',
-        getPersonListMW(objectRepository),
-        getPersonPreferencesMW(objectRepository),
-        renderMW(objectRepository, 'people')
+    app.get('/people/getpreferences/:personid',
+        getPersonMW(objectRepository),
+        getPubListMW(objectRepository),
+        getPersonPreferencesMW(objectRepository)
     );
+
 
     /**
      * Save the modified preference list
      */
-    app.post('/people/list/:id',
-        getPersonListMW(objectRepository),
-        updatePersonPreferencesMW(objectRepository),
-        savePersonMW(objectRepository),
-        renderMW(objectRepository, 'people')
+    app.post('/people/addpreference/:personid',
+        addPersonPreferenceMW(objectRepository),
+        savePersonMW(objectRepository)
+    );
+
+    app.post('/people/delpreference/:personid',
+        delPersonPreferenceMW(objectRepository),
+        savePersonMW(objectRepository)
     );
 
     /**
@@ -44,7 +50,6 @@ module.exports = function (app) {
 
     app.get('/people/list',
         getPersonListMW(objectRepository),
-        getPersonPreferencesMW(objectRepository),
         renderMW(objectRepository, 'people')
     );
 

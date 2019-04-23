@@ -1,25 +1,24 @@
 var requireOption = require('../common').requireOption;
 
 /**
- * Get the person for the personid param
- *  - if there is no such person, redirect to /people/list
- *  - if there is one, put it on res.locals.person
+ * Add a new pub to the pubs list of the person
  */
 module.exports = function (objectrepository) {
 
     var personModel = requireOption(objectrepository, 'personModel');
 
     return function (req, res, next) {
+        if (typeof req.body.pub === 'undefined' || typeof req.params.personid === 'undefined') return next();
 
         personModel.findOne({
             _id: req.params.personid
-        }).populate('_pubs').exec(function (err, result) {
+        }, function (err, result) {
             if ((err) || (!result)) {
-                return res.redirect('/people/list');
+                console.log(err);
             }
-
-            res.locals.person = result;
-            console.log('getpersonMW');
+            result._pubs.push(req.body.pub);
+            res.locals.person=result;
+            console.log('addpersonpreference');
             return next();
         });
     };
