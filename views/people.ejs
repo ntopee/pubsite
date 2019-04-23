@@ -15,7 +15,7 @@
                 <tbody>
                 <%personList.forEach(function(p){%>
                 <tr class="trow">
-                    <td><%= p.name %></td>
+                    <td data-id="<%= p._id %>"><%= p.name %></td>
                     <td><%= p.fullname%></td>
                     <td><%= p.favourite%></td>
                     <td class="text-right">
@@ -31,24 +31,15 @@
         <div class="col-sm-12 text-center col-lg-3">
             <div id="wrapper">
                 <h2>Kedvelt helyek</h2>
-                    <ul id="favourites" class="fbox">
-                        <% if(typeof preferredList !== 'undefined')preferredList.forEach(function(p){%>
-                            <li class="column"><header><%= p%></header></li>
-                        <% }) %>
-                    </ul>
+                    <ul id="favourites" class="fbox"></ul>
                 <h2>Egyéb</h2>
-                <ul id="other" class="fbox">
-                    <% if(typeof notPreferredList !== 'undefined')notPreferredList.forEach(function(p){%>
-                        <li class="column"><header><%= p%></header></li>
-                    <% }) %>
-                </ul>
+                <ul id="other" class="fbox"></ul>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/drag.js"></script>
 <script type="text/javascript" src="/js/people.js"></script>
 <script>$( "#navbarSupportedContent" ).append( "<a class=\"btn btn-outline-success my-2 my-sm-0\" href=\"/people/add\"><i class=\"fas fa-plus\"></i> Új személy</a>" );</script>
 <%- include('footer') %>
