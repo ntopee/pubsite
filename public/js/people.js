@@ -4,8 +4,8 @@ $("#other").sortable({connectWith: "#favourites", receive: prefListRemove});
 
 //Refresh pub lists after clicking on a row in the person table
 $('tr').click(function(){
-    var $tr = $(this);
-    var id=$($tr.find("td:nth-child(1)")).attr('data-id');
+    const $tr = $(this);
+    const id = $($tr.find("td:nth-child(1)")).attr('data-id');
     console.log(id);
     if(typeof id!== 'undefined') {
         $.get("/people/getpreferences/" + id,

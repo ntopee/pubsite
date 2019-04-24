@@ -1,26 +1,26 @@
-var renderMW = require('../middleware/generic/render');
-var getPersonListMW = require('../middleware/people/getPersonList');
-var updatePersonMW = require('../middleware/people/updatePerson');
-var getPersonMW = require('../middleware/people/getPerson');
-var deletePersonMW = require('../middleware/people/deletePerson');
-var addPersonPreferenceMW = require('../middleware/people/addPersonPreference');
-var delPersonPreferenceMW = require('../middleware/people/delPersonPreference');
-var getPersonPreferencesMW = require('../middleware/people/getPersonPreferences');
-var savePersonMW = require('../middleware/people/savePerson');
-var getPubListMW = require('../middleware/pubs/getPubList');
+const renderMW = require('../middleware/generic/render');
+const getPersonListMW = require('../middleware/people/getPersonList');
+const updatePersonMW = require('../middleware/people/updatePerson');
+const getPersonMW = require('../middleware/people/getPerson');
+const deletePersonMW = require('../middleware/people/deletePerson');
+const addPersonPreferenceMW = require('../middleware/people/addPersonPreference');
+const delPersonPreferenceMW = require('../middleware/people/delPersonPreference');
+const getPersonPreferencesMW = require('../middleware/people/getPersonPreferences');
+const savePersonMW = require('../middleware/people/savePerson');
+const getPubListMW = require('../middleware/pubs/getPubList');
 
-var personModel = require("../models/person");
-var pubModel = require("../models/pub");
+const personModel = require("../models/person");
+const pubModel = require("../models/pub");
 
 module.exports = function (app) {
 
-    var objectRepository = {
+    const objectRepository = {
         personModel: personModel,
         pubModel: pubModel
     };
 
     /**
-     * List all people
+     * Send the preferred pubs of the person with :personid
      */
 
     app.get('/people/getpreferences/:personid',
@@ -29,15 +29,17 @@ module.exports = function (app) {
         getPersonPreferencesMW(objectRepository)
     );
 
-
     /**
-     * Save the modified preference list
+     * Add preference to the person with :personid, save the modified preference list
      */
     app.post('/people/addpreference/:personid',
         addPersonPreferenceMW(objectRepository),
         savePersonMW(objectRepository)
     );
 
+    /**
+     * Delete preference from the person with :personid, save the modified preference list
+     */
     app.post('/people/delpreference/:personid',
         delPersonPreferenceMW(objectRepository),
         savePersonMW(objectRepository)
@@ -53,14 +55,16 @@ module.exports = function (app) {
     );
 
     /**
-     * Add new person
+     * Load add new person screen
      */
 
     app.get('/people/add',
         renderMW(objectRepository, 'people_edit')
     );
 
-
+    /**
+     * Add new person
+     */
     app.post('/people/add',
         updatePersonMW(objectRepository),
         savePersonMW(objectRepository),
@@ -68,14 +72,16 @@ module.exports = function (app) {
     );
 
     /**
-     * Edit the person details
+     * Load the edit person screen
      */
-
     app.get('/people/mod/:personid',
         getPersonMW(objectRepository),
         renderMW(objectRepository, 'people_edit')
     );
 
+    /**
+     * Edit the person details
+     */
     app.post('/people/mod/:personid',
         getPersonMW(objectRepository),
         updatePersonMW(objectRepository),
@@ -87,7 +93,6 @@ module.exports = function (app) {
      * Delete person
      * - then redirect to /people
      */
-
     app.get('/people/del/:personid',
         getPersonMW(objectRepository),
         deletePersonMW(objectRepository),
