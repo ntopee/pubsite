@@ -1,10 +1,8 @@
-var requireOption = require('../common').requireOption;
 /**
  * Delete the Pub object, if its already loaded
  */
 module.exports = function (objectrepository) {
 
-    var pubModel = requireOption(objectrepository, 'pubModel');
     return function (req, res, next) {
         if(typeof res.locals.pub === 'undefined'){
             return next();

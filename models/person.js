@@ -1,7 +1,7 @@
-var Schema = require("mongoose/lib/browser").Schema;
-var db = require('../config/db');
+const Schema = require("mongoose/lib/browser").Schema;
+const db = require('../config/db');
 
-var Person = db.model('Person', new Schema({
+const Person = db.model('Person', new Schema({
     name: {
         type: String,
         required: true
@@ -10,7 +10,7 @@ var Person = db.model('Person', new Schema({
     favourite: String,
     _pubs: [{
         type: Schema.Types.ObjectId,
-        ref : 'Pub'
+        ref: 'Pub'
     }]
 }));
 module.exports = Person;

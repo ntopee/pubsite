@@ -1,12 +1,12 @@
-var Schema = require("mongoose/lib/browser").Schema;
-var db = require('../config/db');
+const Schema = require("mongoose/lib/browser").Schema;
+const db = require('../config/db');
 
-var Pub = db.model('Pub', new Schema({
+const Pub = db.model('Pub', new Schema({
     name: {
         type: String,
         required: true
     },
     address: String,
-    open : String
+    open: String
 }));
 module.exports = Pub;

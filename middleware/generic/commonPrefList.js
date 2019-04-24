@@ -1,4 +1,4 @@
-var requireOption = require('../common').requireOption;
+let requireOption = require('../common').requireOption;
 
 /**
  * Get the preferred pubs for the persons in req.body.data
@@ -7,14 +7,14 @@ var requireOption = require('../common').requireOption;
 module.exports = function (objectrepository) {
 
     let personModel = requireOption(objectrepository, 'personModel');
-
+    var pubs = [];
     return function (req, res, next) {
         if (typeof req.body.data !== 'undefined')
         personModel.find({_id: req.body.data}).populate('_pubs').exec(function (err, result) {
             if (err) {
                 return next(err);
             }
-            let pubs = [];
+
             result.some(function (person) {
                 if (pubs.length === 0) {
                     pubs = person._pubs;

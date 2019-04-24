@@ -14,7 +14,6 @@ module.exports = function (objectrepository) {
             //redirect to all people
             res.redirect('/people/list');
         });
-        console.log('deletepersonMW');
     };
 
 };

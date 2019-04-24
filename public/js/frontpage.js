@@ -2,7 +2,7 @@
 $("#favourites").sortable({connectWith: "#other", receive: addAttender});
 $("#other").sortable({connectWith: "#favourites", receive: removeAttender});
 
-var attending=[];
+var attending = [];
 
 /**
  * Add the dropped in person to the list of attending people
@@ -46,3 +46,4 @@ function updatePubList(){
         }, "json");
     });
 }
+//todo valami rak itt
