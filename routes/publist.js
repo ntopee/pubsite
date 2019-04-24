@@ -3,7 +3,6 @@ var getPubListMW = require('../middleware/pubs/getPubList');
 var updatePubMW = require ('../middleware/pubs/updatePub');
 var getPubMW = require ('../middleware/pubs/getPub');
 var deletePubMW = require ('../middleware/pubs/deletePub');
-var checkPubMW =require('../middleware/pubs/checkPub');
 var savePubMW=require('../middleware/pubs/savePub');
 
 var pubModel = require("../models/pub");
@@ -33,7 +32,6 @@ module.exports = function (app) {
 
     app.post('/pubs/add',
         updatePubMW(objectRepository),
-        checkPubMW(objectRepository),
         savePubMW(objectRepository),
         renderMW(objectRepository, 'pubs_edit')
     );
@@ -49,7 +47,6 @@ module.exports = function (app) {
 
     app.post('/pubs/mod/:pubid',
         getPubMW(objectRepository),
-        checkPubMW(objectRepository),
         updatePubMW(objectRepository),
         savePubMW(objectRepository),
         renderMW(objectRepository, 'pubs_edit')

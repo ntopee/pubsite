@@ -5,7 +5,7 @@ var requireOption = require('../common').requireOption;
  */
 module.exports = function (objectrepository) {
 
-    var personModel = requireOption(objectrepository, 'personModel');
+    let personModel = requireOption(objectrepository, 'personModel');
 
     return function (req, res, next) {
         if (typeof req.body.pub === 'undefined' || typeof req.params.personid === 'undefined') return next();

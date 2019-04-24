@@ -9,13 +9,12 @@
             <h3>Többiek</h3>
                 <ul id="other" class="fbox">
                     <% personList.forEach(function(p){%>
-                        <li class="column" itemID="1">
+                        <li class="column" itemID="1" data-id="<%= p._id %>">
                             <header><%= p.name %></header>
                         </li>
                         <% }) %>
                 </ul>
         </div>
-
 
         <div class="col-md-12 col-lg-8">
             <h2>Ide mehetünk</h2>
@@ -27,12 +26,12 @@
                     <th>Nyitvatartás</th>
                 </tr>
                 </thead>
-                <tbody>
-                <% commonPrefList.forEach(function(p){%>
+                <tbody id="pubtable">
+                <% pubList.forEach(function(p){%>
                 <tr class="trow">
-                    <td><%=p.name %></td>
-                    <td><%= p.address%></td>
-                    <td><%= p.open%></td>
+                    <td class="namecol"><%=p.name %></td>
+                    <td class="fullnamecol"><%= p.address%></td>
+                    <td class="favcol"><%= p.open%></td>
                 </tr>
                     <% }) %>
                 </tbody>

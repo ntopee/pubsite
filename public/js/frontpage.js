@@ -1,13 +1,48 @@
+//connect the 2 people list div, make them sortable
 $("#favourites").sortable({connectWith: "#other", receive: addAttender});
 $("#other").sortable({connectWith: "#favourites", receive: removeAttender});
 
-//pub dropped to preferred pubs, save it to db
+var attending=[];
+
+/**
+ * Add the dropped in person to the list of attending people
+ * update the table of pubs
+ */
 function addAttender(event, ui){
-   // $.post( "/people/addpreference/"+ $($('.highlight').find("td:nth-child(1)")).attr('data-id'),{pub: $(ui.item).attr('data-id')});
+   attending.push($(ui.item).attr('data-id'));
+    updatePubList();
 }
 
-//pub removed from preferred pubs, save it to db
+/**
+ * Remove the person from the list of attending people
+ * update the table of pubs
+ */
 function removeAttender(event, ui){
-  //  console.log($(ui.item).attr('data-id') + "  removed");
-  //  $.post( "/people/delpreference/"+ $($('.highlight').find("td:nth-child(1)")).attr('data-id'),{pub: $(ui.item).attr('data-id')});
+    for(let i = 0; i < attending.length; i++){
+        if ( attending[i] === $(ui.item).attr('data-id')) {
+            attending.splice(i, 1);
+            break;
+        }
+    }
+    updatePubList();
+}
+
+/**
+ * Post the current people on the attending list,
+ * update the table of pubs with the result
+ */
+function updatePubList(){
+    $.post( "/commonpreflist",$.param({ data: attending }, true), function (data) {
+        let $table = $('#pubtable');
+        $table.empty();
+        if (typeof data.pubList !== 'undefined') data.pubList.forEach(function (p) {
+            //using jquery with text attribute to avoid html injection
+            let $row = $('<tr class="trow"></tr>');
+            let $name =$('<td class="namecol"></td>').text(p.name);
+            let $address =$('<td class="fullnamecol"></td>').text(p.address);
+            let $open =$('<td class="favcol"></td>').text(p.open);
+            $row.append($name, $address, $open);
+            $table.append($row);
+        }, "json");
+    });
 }

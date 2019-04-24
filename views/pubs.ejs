@@ -15,9 +15,9 @@
                 <tbody>
                 <% pubList.forEach(function(p){%>
                 <tr class="trow">
-                    <td><%=p.name %></td>
-                    <td><%= p.address%></td>
-                    <td><%= p.open%></td>
+                    <td class="namecol"><%=p.name %></td>
+                    <td class="fullnamecol"><%= p.address%></td>
+                    <td class="favcol"><%= p.open%></td>
                     <td class="text-right">
                         <a href="/pubs/mod/<%=p._id %>" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
                         <a href="/pubs/del/<%=p._id %>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>

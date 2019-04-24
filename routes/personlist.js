@@ -6,7 +6,6 @@ var deletePersonMW = require('../middleware/people/deletePerson');
 var addPersonPreferenceMW = require('../middleware/people/addPersonPreference');
 var delPersonPreferenceMW = require('../middleware/people/delPersonPreference');
 var getPersonPreferencesMW = require('../middleware/people/getPersonPreferences');
-var checkPersonMW = require('../middleware/people/checkPerson');
 var savePersonMW = require('../middleware/people/savePerson');
 var getPubListMW = require('../middleware/pubs/getPubList');
 
@@ -63,7 +62,6 @@ module.exports = function (app) {
 
 
     app.post('/people/add',
-        checkPersonMW(objectRepository),
         updatePersonMW(objectRepository),
         savePersonMW(objectRepository),
         renderMW(objectRepository, 'people_edit')
@@ -92,7 +90,6 @@ module.exports = function (app) {
 
     app.get('/people/del/:personid',
         getPersonMW(objectRepository),
-        checkPersonMW(objectRepository),
         deletePersonMW(objectRepository),
         function (req, res, next) {
             return res.redirect('/people/list');

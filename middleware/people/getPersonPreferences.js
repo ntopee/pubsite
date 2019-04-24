@@ -11,7 +11,6 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         if(typeof res.locals.person === 'undefined') return next();
-        //todo send valid data
         let preferredList=res.locals.person._pubs;
         let notPreferredList=res.locals.pubList;
         res.locals.person._pubs.forEach(function (pub) {

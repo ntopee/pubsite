@@ -1,10 +1,7 @@
-var requireOption = require('../common').requireOption;
-
 /**
  * Delete the Person object, if its already loaded
  */
 module.exports = function (objectrepository) {
-    var personModel = requireOption(objectrepository, 'personModel');
     return function (req, res, next) {
         if(typeof res.locals.person === 'undefined'){
             return next();

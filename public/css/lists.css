@@ -1,6 +1,3 @@
-body {
-
-}
 #favourites {
     width: 320px;
     min-height: 70px;
@@ -37,7 +34,6 @@ body {
     cursor: grab;
 }
 
-
 .column header:hover{
     background-color: #b8bbbc;
 }
@@ -47,4 +43,17 @@ body {
 }
 .highlight {
     background-color: #838687;
+}
+
+.namecol{
+    word-wrap: break-word;
+    max-width: 200px;
+}
+.fullnamecol{
+    word-wrap: break-word;
+    max-width: 250px;
+}
+.favcol{
+    word-wrap: break-word;
+    max-width: 100px;
 }

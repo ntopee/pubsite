@@ -37,19 +37,21 @@ $('.trow').click(function(){
     $(this).addClass('highlight');
 });
 
-
-//pub dropped to preferred pubs, save it to db
-function prefListAdd(event, ui){
-    $.post( "/people/addpreference/"+ $($('.highlight').find("td:nth-child(1)")).attr('data-id'),{pub: $(ui.item).attr('data-id')});
-}
-
-//pub removed from preferred pubs, save it to db
-function prefListRemove(event, ui){
-    console.log($(ui.item).attr('data-id') + "  removed");
-    $.post( "/people/delpreference/"+ $($('.highlight').find("td:nth-child(1)")).attr('data-id'),{pub: $(ui.item).attr('data-id')});
-}
-
 //select first person
 $( document ).ready(function() {
     $('tr:first-child').click();
 });
+
+/**
+ * When pub dropped to preferred pubs, save it to db
+ */
+function prefListAdd(event, ui){
+    $.post( "/people/addpreference/"+ $($('.highlight').find("td:nth-child(1)")).attr('data-id'),{pub: $(ui.item).attr('data-id')});
+}
+/**
+ *pub removed from preferred pubs, save it to db
+ */
+function prefListRemove(event, ui){
+    console.log($(ui.item).attr('data-id') + "  removed");
+    $.post( "/people/delpreference/"+ $($('.highlight').find("td:nth-child(1)")).attr('data-id'),{pub: $(ui.item).attr('data-id')});
+}
