@@ -1,11 +1,11 @@
-var requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Remove a pub from the pubs list of the person, put result in res.locals.person
  */
 module.exports = function (objectrepository) {
 
-    var personModel = requireOption(objectrepository, 'personModel');
+    const personModel = requireOption(objectrepository, 'personModel');
 
     return function (req, res, next) {
         if (typeof req.body.pub === 'undefined' || typeof req.params.personid === 'undefined') return next();
@@ -21,7 +21,6 @@ module.exports = function (objectrepository) {
             });
             res.locals.person=result;
             res.locals.person._pubs=list;
-            console.log('delpersonpreference');
             return next();
         });
     };

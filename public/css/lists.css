@@ -13,9 +13,7 @@
     background: #d4d5d6;
     border-radius: 20px;
     border: 2px solid #a0a0a0;
-
 }
-
 .column {
     width: 162px;
     padding-bottom: 5px;
@@ -33,18 +31,15 @@
     border: 2px solid #666666;
     cursor: grab;
 }
-
 .column header:hover{
     background-color: #b8bbbc;
 }
-
 .trow:hover{
     background: #d4d5d6;
 }
 .highlight {
     background-color: #838687;
 }
-
 .namecol{
     word-wrap: break-word;
     max-width: 200px;

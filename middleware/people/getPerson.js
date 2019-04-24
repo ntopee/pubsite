@@ -1,4 +1,4 @@
-var requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Get the person for the personid param
@@ -7,19 +7,16 @@ var requireOption = require('../common').requireOption;
  */
 module.exports = function (objectrepository) {
 
-    var personModel = requireOption(objectrepository, 'personModel');
+    const personModel = requireOption(objectrepository, 'personModel');
 
     return function (req, res, next) {
-
         personModel.findOne({
             _id: req.params.personid
         }).populate('_pubs').exec(function (err, result) {
             if ((err) || (!result)) {
                 return res.redirect('/people/list');
             }
-
             res.locals.person = result;
-            console.log('getpersonMW');
             return next();
         });
     };

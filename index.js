@@ -1,6 +1,6 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
 //Use the static MW
 app.use(express.static('public'));
@@ -33,6 +33,6 @@ app.use(function (err, req, res, next) {
 });
 
 //start server
-var server = app.listen(3000, function () {
+const server = app.listen(3000, function () {
     console.log('listening on http://localhost:3000');
 });

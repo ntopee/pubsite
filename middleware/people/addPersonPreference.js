@@ -1,11 +1,11 @@
-var requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Add a new pub to the pubs list of the person
  */
 module.exports = function (objectrepository) {
 
-    let personModel = requireOption(objectrepository, 'personModel');
+    const personModel = requireOption(objectrepository, 'personModel');
 
     return function (req, res, next) {
         if (typeof req.body.pub === 'undefined' || typeof req.params.personid === 'undefined') return next();
@@ -18,7 +18,6 @@ module.exports = function (objectrepository) {
             }
             result._pubs.push(req.body.pub);
             res.locals.person=result;
-            console.log('addpersonpreference');
             return next();
         });
     };

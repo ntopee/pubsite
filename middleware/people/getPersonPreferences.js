@@ -1,14 +1,9 @@
-var requireOption = require('../common').requireOption;
-
 /**
  * Get the preferred and not preferred pubs for the person of the personid param
  *  - if there is no such person, redirect to /people
  *  - else send the lists
  */
 module.exports = function (objectrepository) {
-
-    var pubModel = requireOption(objectrepository, 'personModel');
-
     return function (req, res, next) {
         if(typeof res.locals.person === 'undefined') return next();
         let preferredList=res.locals.person._pubs;
@@ -20,7 +15,6 @@ module.exports = function (objectrepository) {
                 }
             }
         });
-        console.log('getpersonpreferences');
        res.send({preferredList,notPreferredList});
     };
 };

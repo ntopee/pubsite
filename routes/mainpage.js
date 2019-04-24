@@ -1,20 +1,20 @@
-var renderMW = require('../middleware/generic/render');
-var commonPrefListMW = require('../middleware/generic/commonPrefList');
-var getPersonListMW = require('../middleware/people/getPersonList');
-var getPubListMW = require('../middleware/pubs/getPubList');
+const renderMW = require('../middleware/generic/render');
+const commonPrefListMW = require('../middleware/generic/commonPrefList');
+const getPersonListMW = require('../middleware/people/getPersonList');
+const getPubListMW = require('../middleware/pubs/getPubList');
 
-var personModel = require("../models/person");
-var pubModel = require("../models/pub");
+const personModel = require("../models/person");
+const pubModel = require("../models/pub");
 
 module.exports = function (app) {
 
-    var objectRepository = {
+    const objectRepository = {
         personModel: personModel,
         pubModel: pubModel
     };
 
     /**
-     * Main page, with a list of the common preferred pubs
+     * Sends the common pubs of the people in post
      */
     app.post('/commonpreflist',
         getPersonListMW(objectRepository),

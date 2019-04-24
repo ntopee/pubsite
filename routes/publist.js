@@ -1,35 +1,36 @@
-var renderMW = require('../middleware/generic/render');
-var getPubListMW = require('../middleware/pubs/getPubList');
-var updatePubMW = require ('../middleware/pubs/updatePub');
-var getPubMW = require ('../middleware/pubs/getPub');
-var deletePubMW = require ('../middleware/pubs/deletePub');
-var savePubMW=require('../middleware/pubs/savePub');
+const renderMW = require('../middleware/generic/render');
+const getPubListMW = require('../middleware/pubs/getPubList');
+const updatePubMW = require('../middleware/pubs/updatePub');
+const getPubMW = require('../middleware/pubs/getPub');
+const deletePubMW = require('../middleware/pubs/deletePub');
+const savePubMW = require('../middleware/pubs/savePub');
 
-var pubModel = require("../models/pub");
+const pubModel = require("../models/pub");
 
 module.exports = function (app) {
 
-    var objectRepository = {
+    const objectRepository = {
         pubModel: pubModel
     };
 
     /**
      * List all pubs
      */
-
     app.get('/pubs',
         getPubListMW(objectRepository),
         renderMW(objectRepository, 'pubs')
     );
 
     /**
-     * Create new pub
+     * Load the Create new pub screen
      */
-
     app.get('/pubs/add',
         renderMW(objectRepository, 'pubs_edit')
     );
 
+    /**
+     * Create new pub
+     */
     app.post('/pubs/add',
         updatePubMW(objectRepository),
         savePubMW(objectRepository),
@@ -37,14 +38,16 @@ module.exports = function (app) {
     );
 
     /**
-     * Edit pub
+     * Load the Edit pub screen
      */
-
     app.get('/pubs/mod/:pubid',
         getPubMW(objectRepository),
         renderMW(objectRepository, 'pubs_edit')
     );
 
+    /**
+     * Edit pub
+     */
     app.post('/pubs/mod/:pubid',
         getPubMW(objectRepository),
         updatePubMW(objectRepository),
