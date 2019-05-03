@@ -1,7 +1,7 @@
 /**
  * Save the person on res.locals.person to the db
  */
-module.exports = function (objectrepository) {
+module.exports = function () {
 
     return function (req, res, next) {
         if(typeof res.locals.person !== 'undefined') res.locals.person.save(function (err) {

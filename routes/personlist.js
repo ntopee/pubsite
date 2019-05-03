@@ -26,7 +26,7 @@ module.exports = function (app) {
     app.get('/people/getpreferences/:personid',
         getPersonMW(objectRepository),
         getPubListMW(objectRepository),
-        getPersonPreferencesMW(objectRepository)
+        getPersonPreferencesMW()
     );
 
     /**
@@ -34,7 +34,7 @@ module.exports = function (app) {
      */
     app.post('/people/addpreference/:personid',
         addPersonPreferenceMW(objectRepository),
-        savePersonMW(objectRepository)
+        savePersonMW()
     );
 
     /**
@@ -42,7 +42,7 @@ module.exports = function (app) {
      */
     app.post('/people/delpreference/:personid',
         delPersonPreferenceMW(objectRepository),
-        savePersonMW(objectRepository)
+        savePersonMW()
     );
 
     /**
@@ -51,7 +51,7 @@ module.exports = function (app) {
 
     app.get('/people/list',
         getPersonListMW(objectRepository),
-        renderMW(objectRepository, 'people')
+        renderMW('people')
     );
 
     /**
@@ -59,7 +59,7 @@ module.exports = function (app) {
      */
 
     app.get('/people/add',
-        renderMW(objectRepository, 'people_edit')
+        renderMW('people_edit')
     );
 
     /**
@@ -67,8 +67,8 @@ module.exports = function (app) {
      */
     app.post('/people/add',
         updatePersonMW(objectRepository),
-        savePersonMW(objectRepository),
-        renderMW(objectRepository, 'people_edit')
+        savePersonMW(),
+        renderMW('people_edit')
     );
 
     /**
@@ -76,7 +76,7 @@ module.exports = function (app) {
      */
     app.get('/people/mod/:personid',
         getPersonMW(objectRepository),
-        renderMW(objectRepository, 'people_edit')
+        renderMW('people_edit')
     );
 
     /**
@@ -85,8 +85,8 @@ module.exports = function (app) {
     app.post('/people/mod/:personid',
         getPersonMW(objectRepository),
         updatePersonMW(objectRepository),
-        savePersonMW(objectRepository),
-        renderMW(objectRepository, 'people_edit')
+        savePersonMW(),
+        renderMW('people_edit')
     );
 
     /**
@@ -95,7 +95,7 @@ module.exports = function (app) {
      */
     app.get('/people/del/:personid',
         getPersonMW(objectRepository),
-        deletePersonMW(objectRepository),
+        deletePersonMW(),
         function (req, res, next) {
             return res.redirect('/people/list');
         }

@@ -27,6 +27,6 @@ module.exports = function (app) {
     app.get('/',
         getPersonListMW(objectRepository),
         getPubListMW(objectRepository),
-        renderMW(objectRepository, 'mainpage')
+        renderMW('mainpage')
     );
 };

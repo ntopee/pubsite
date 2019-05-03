@@ -18,14 +18,14 @@ module.exports = function (app) {
      */
     app.get('/pubs',
         getPubListMW(objectRepository),
-        renderMW(objectRepository, 'pubs')
+        renderMW('pubs')
     );
 
     /**
      * Load the Create new pub screen
      */
     app.get('/pubs/add',
-        renderMW(objectRepository, 'pubs_edit')
+        renderMW('pubs_edit')
     );
 
     /**
@@ -33,8 +33,8 @@ module.exports = function (app) {
      */
     app.post('/pubs/add',
         updatePubMW(objectRepository),
-        savePubMW(objectRepository),
-        renderMW(objectRepository, 'pubs_edit')
+        savePubMW(),
+        renderMW('pubs_edit')
     );
 
     /**
@@ -42,7 +42,7 @@ module.exports = function (app) {
      */
     app.get('/pubs/mod/:pubid',
         getPubMW(objectRepository),
-        renderMW(objectRepository, 'pubs_edit')
+        renderMW('pubs_edit')
     );
 
     /**
@@ -52,7 +52,7 @@ module.exports = function (app) {
         getPubMW(objectRepository),
         updatePubMW(objectRepository),
         savePubMW(objectRepository),
-        renderMW(objectRepository, 'pubs_edit')
+        renderMW('pubs_edit')
     );
 
     /**
@@ -62,7 +62,7 @@ module.exports = function (app) {
 
     app.get('/pubs/del/:pubid',
         getPubMW(objectRepository),
-        deletePubMW(objectRepository),
+        deletePubMW(),
         function (req, res, next) {
             return res.redirect('/pubs');
         }

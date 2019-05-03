@@ -1,7 +1,7 @@
 /**
  * Delete the Person object, if its already loaded
  */
-module.exports = function (objectrepository) {
+module.exports = function () {
     return function (req, res, next) {
         if(typeof res.locals.person === 'undefined'){
             return next();

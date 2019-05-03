@@ -1,7 +1,7 @@
 /**
  * Saves the changes to the database
  */
-module.exports = function (objectrepository) {
+module.exports = function () {
 
     return function (req, res, next) {
         if(typeof res.locals.pub !== 'undefined') res.locals.pub.save(function (err) {
