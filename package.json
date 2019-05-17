@@ -4,13 +4,20 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc --reporter=text mocha",
+    "cover": "nyc --reporter=html --reporter=text mocha"
   },
   "dependencies": {
     "body-parser": "^1.15.1",
+    "chai": "^4.2.0",
     "ejs": "^2.6.1",
     "express": "^4.13.4",
+    "istanbul": "^0.4.5",
     "jquery": "^3.3.1",
+    "mocha": "^6.1.4",
     "mongoose": "^5.5.2"
+  },
+  "devDependencies": {
+    "nyc": "^14.1.1"
   }
 }
